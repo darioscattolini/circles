@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <meta name="description" content="A program to calculate some relationships between two circles.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <header>
+    
+        <h1>Circles</h1>
+        
+        <p>This is my third program. It is the solution to one of the first object-oriented programming exercises I have dealt with. Users introduce data to build two circles, and the program displays information on the relationships between them. The assignment asked to treat points and circles as objects built from classes in the style of Java. The different calculations performed are methods defined in the Circle class. I added later a canvas element in order to provide a graphic representation of the circles.</p>
+        
+    </header>
+    
+    <main>
+
+        <div class="input">
+
+            <p><strong>Introduce data to build two circles:</strong></p>
+        
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Center on x-axis</th>
+                    <th>Center on y-axis</th>
+                    <th>Radius</th>
+                </tr>
+                <tr>
+                    <td><strong>Circle 1</strong></td>
+                    <td><input type="number" id="x1"></td>
+                    <td><input type="number" id="y1"></td>
+                    <td><input type="number" id="r1" min="1"></td>
+                </tr>
+                <tr>
+                    <td><strong>Circle 2</strong></td>
+                    <td><input type="number" id="x2"></td>
+                    <td><input type="number" id="y2"></td>
+                    <td><input type="number" id="r2" min="1"></td>
+                </tr>
+            </table>
+        
+            <button id="button"> Display result </button>
+
+            <hr>
+
+        </div>
+        
+        <div class="result">
+
+            <div id="text"></div>
+
+            <canvas id="graph" width="270" height="270">Representation of the circles on a cartesian plane.</canvas>
+
+        </div>
+
+    </main>
+
+    <footer>
+            <p>Developed by <strong>Darío Scattolini</strong>, November 2019.</p>
+            <a href="https://github.com/darioscattolini">
+                <img src="GitHub-Mark-64px.png" alt="GitHub icon that links to Darío Scattolini's GitHub page.">
+            </a>
+    </footer>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
