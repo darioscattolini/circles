@@ -1,31 +1,42 @@
-html, body {
-    height: 100%;
-    width: 100%;
+* {
     margin: 0;
     padding: 0;
- }
+    box-sizing: border-box;
+}
 
 body {
-    display: grid;
-    grid-template-columns: 40vw 60vw;
-    grid-auto-rows: 80vh 20vh;
-    grid-template-areas:    "header main"
-                            "footer main";
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80vw;
+    margin: 0 auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: whitesmoke;
+    background-color: #f5f5f5;
+    color: #1b1725;
 }
 
 header {
-    grid-area: header;
-    padding: 5%;
+    margin: 0 -10vw;
+    padding: 2vh 15vw;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: baseline;
+    background-color: #1b1725;
+    color: whitesmoke;
+    font-size: calc(0.5em + 1.1vw);
+}
+
+header h1 {
+    font-size: 1.3em;
+}
+
+header p {
+    font-weight: 500;
 }
 
 main {
-    grid-area: main;
-    padding: 5%;
+    margin-top: 2vh;
 }
 
 .input {
@@ -33,7 +44,7 @@ main {
 }
 
 .input table {
-    margin: auto;
+    margin: 0 auto 2vh;
 }
 
 .input tr {
@@ -45,12 +56,11 @@ main {
 }
 
 .input button {
-    margin: 3% 0 0 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1em;
 	font-weight: bold;
     box-shadow: inset 0px 1px 3px 0px #91b8b3;
-	background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background: linear-gradient(to bottom, #768d87 5%, #1b1725 100%);
 	background-color: #768d87;
 	border-radius: 5px;
 	border: 1px solid #566963;
@@ -62,99 +72,99 @@ main {
 	text-shadow: 0px -1px 0px #2b665e;
 }
 .input button:hover {
-	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-	background-color:#6c7c7c;
+	background:linear-gradient(to bottom, #1b1725 5%, #768d87 100%);
+	background-color:#1b1725;
 }
 .input button:active {
 	position:relative;
 	top:1px;
 }
+.input button:focus {
+    outline: 0;
+}
 
 .input hr {
-    margin: 4% 0;
+    margin: 3vh 0;
 }
 
 .result {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.result #text, .result #graph {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.result p {
+    margin: 1.2vh 0;
+    font-size: 1.1em;
 }
 
 footer {
-    grid-area: footer;
-    align-self: end;
-    padding: 5%;
+    width: 80vw;
+    margin-bottom: 2vh;
+    padding: 0 1.2vw;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 1.1em;
 }
 
-footer img {
-    height: 2em;
+footer span {
+    margin: 1vh 1vw;
 }
 
-@media (max-width: 920px) {
-    html, body {
-        height: initial;
-     }
+footer i {
+    margin-left: 1vw;
+    font-size: 1.5em;
+    color: #1b1725;
+}
+
+@media (max-width: 735px) {
 
     body {
-        grid-template-columns: 368px 1fr;
-        grid-auto-rows: 80% 20%;
-    }
-
-    .result {
-        grid-template-columns: 100%;
-        grid-template-rows: 1fr 270px;
-        padding: 0 0 5% 0;
-    }
-
-    .result #text, .result #graph {
-        display: initial;
-        justify-self: center;
-    }
-
-    .result #graph {
-        padding: 4% 0 0 0;
-    }
-}
-
-@media (max-width: 680px) {
-    body {
-        display: initial;
-    }
-
-    header {
-        padding: 2.5% 5%;
-    }
-    
-    main {
-        padding: 2.5% 5%;
-    }
-
-    .result {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: initial;
-        padding: 0;
+        width: 90vw;
+        font-size: 0.95em;
     }
 
     .result canvas {
         width: 220px;
         height: 220px;
     }
+    
+}
 
-    footer {
-        padding: 2.5% 5%;
+@media (max-width: 660px) {
+    .result {
+        flex-direction: column;
+    }
+
+    .result #graph {
+        margin: 2vh 0;
+    }
+
+    footer span {
+        margin: 0.5vh 1vw;
     }
 }
 
-@media (max-width: 480px) {
-    .result {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 530px) {
+    header {
+        display: block;
+    }
+
+    header h1 {
+        margin-bottom: 1vh;
+        font-size: 17.5px;
+    }
+
+    header p {
+        font-size: 13.5px;
+    }
+}
+
+@media (max-width: 470px) {
+    body {
+        font-size: 0.8em;
     }
 }

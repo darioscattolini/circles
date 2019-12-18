@@ -87,13 +87,13 @@ document.getElementById("button").onclick = () => {
           circle2 = new Circle(center2, r2);
     
     document.getElementById("text").innerHTML =
-        `The distance between centers is ${circle1.distanceToCenterOf(circle2)}.<br>
-        The circles are ${circle1.sameAs(circle2) ? "" : "not "}equal.<br>
-        The circles are ${circle1.isConcentric(circle2) ? "" : "not "}concentric.<br>
-        The circles have ${circle1.sameRadiusAs(circle2) ? "" : "not "}equal radii.<br>
-        The circles are ${circle1.isTangent(circle2) ? "" : "not "}tangent.<br>
-        The circles are ${circle1.isSecant(circle2) ? "" : "not "}secant.<br>
-        The circumferences ${circle1.doesNotTouch(circle2) ? "do not " : ""}touch each other.<br>`;
+        `<p>The distance between centers is ${circle1.distanceToCenterOf(circle2)}.</p>
+        <p>The circles are ${circle1.sameAs(circle2) ? "" : "not "}equal.</p>
+        <p>The circles are ${circle1.isConcentric(circle2) ? "" : "not "}concentric.</p>
+        <p>The circles have ${circle1.sameRadiusAs(circle2) ? "" : "not "}equal radii.</p>
+        <p>The circles are ${circle1.isTangent(circle2) ? "" : "not "}tangent.</p>
+        <p>The circles are ${circle1.isSecant(circle2) ? "" : "not "}secant.</p>
+        <p>The circumferences ${circle1.doesNotTouch(circle2) ? "do not " : ""}touch each other.</p>`;
     
     drawCanvas(x1, y1, r1, x2, y2, r2);
 }
