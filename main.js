@@ -1,4 +1,4 @@
-/********** PROGRAMA BÁSICO **********/
+/************* CORE PROGRAM *************/
 
 class Point {
     constructor(x, y) {
@@ -73,6 +73,7 @@ class Circle {
     }
 }
 
+/* Builds 2 circles with data introduced by user and displays relationships */
 document.getElementById("button").onclick = () => {
     const x1 = parseInt(document.getElementById("x1").value),
           y1 = parseInt(document.getElementById("y1").value),
@@ -98,52 +99,53 @@ document.getElementById("button").onclick = () => {
     drawCanvas(x1, y1, r1, x2, y2, r2);
 }
 
-/********** DIBUJO DE LOS CÍRCULOS EN CANVAS **********/
+/********** DRAWING OF CIRCLES IN CANVAS **********/
 
-/* VARIABLES GLOBALES PARA DIBUJAR EN CANVAS */
+/* GLOBAL VARIABLES */
 const Canvas   = document.getElementById('graph'),
-      Width    = Canvas.width,
+      Width    = Canvas.width,                     
       Height   = Canvas.height,
-      Boundary = [];
+      Boundary = [];            //boundary of cartesian plane
 
-let context;
+let context;                    //canvas context
 
-/* FUNCIÓN PRINCIPAL QUE CONTROLA TODO EL PROCESO DE DIBUJO*/
+/* Function that governs the whole drawing process */
 const drawCanvas = (x1, y1, r1, x2, y2, r2) => {
-    // Calcula los límites del plano cartesiano
+    
     calcBoundary(x1, y1, r1, x2, y2, r2);
 
     if (Canvas.getContext) {
-        // Arma el canvas:
+            // Set up canvas
         context = Canvas.getContext('2d');
         context.clearRect(0, 0, Width, Height);
      
-        // Dibuja el contenido:
+            // Draw content
         drawAxes();
         renderCircles(x1, y1, r1, x2, y2, r2);
     }
 }
 
-/* Función que calcula los límites del plano cartesiano */
+/* Calculates boundaries of cartesian plane */
 const calcBoundary = (x1, y1, r1, x2, y2, r2) => {    
-    // Extremos del plano requeridos por los círculos
+
+        // Boundaries required by circles
     const leftBoundary   = Math.abs(Math.min(x1 - r1, x2 - r2)),
           rightBoundary  = Math.abs(Math.max(x1 + r1, x2 + r2)),
           topBoundary    = Math.abs(Math.min(y1 - r1, y2 - r2)),
           bottomBoundary = Math.abs(Math.max(y1 + r1, y2 + r2));
     
-    // Se elije el máximo valor para el límite exterior para dibujar un plano simétrico
-    // Se le suma 1 para dejar un padding entre los círculos y el borde del plano
+        // Maximum value chosen in order to draw a symmetrical plane
+        // +1 to add padding between circles and boundary
     const maxBoundary = Math.max(leftBoundary, rightBoundary, topBoundary, bottomBoundary) + 1;
     
-    // Se llena el array Boundary con los cuatro límites del plano cartesiano
+        // Boundary array filled with four boundaries of cartesian plane
     Boundary[0] = -maxBoundary;
     Boundary[1] = maxBoundary;
     Boundary[2] = -maxBoundary;
     Boundary[3] = maxBoundary;
 }
 
-/* Funciones que convierten las posiciones cartesianas a coordenadas de canvas */
+/* Functions that transform cartesian coordinates into canvas context coordinates */
 const canvasX = x => {
     return (x - Boundary[0]) / (Boundary[1] - Boundary[0]) * Width;
 }
@@ -154,24 +156,24 @@ const canvasRadius = r => {
     return r * Width / (Boundary[1] - Boundary[0]);
 }
 
-/* Función que dibuja el plano cartesiano en canvas */
+/* Draws cartesian axes in canvas */
 const drawAxes = () => {
     context.save();
     context.lineWidth = 2;
     
-    // Eje +Y
+        // +Y axis
     context.beginPath();
     context.moveTo(canvasX(0), canvasY(0));
     context.lineTo(canvasX(0), canvasY(Boundary[3]));
     context.stroke();
 
-    // Eje -Y
+        // -Y axis
     context.beginPath();
     context.moveTo(canvasX(0), canvasY(0));
     context.lineTo(canvasX(0), canvasY(Boundary[2]));
     context.stroke();
 
-    // Marcas en el eje Y
+        // Y axis ruler
     for (var i = 1; i < Boundary[3]; ++i) {
         context.beginPath();
         context.moveTo(canvasX(0) - 5, canvasY(i));
@@ -186,19 +188,19 @@ const drawAxes = () => {
         context.stroke();
     }
 
-    // Eje +X
+        // +X axis
     context.beginPath();
     context.moveTo(canvasX(0), canvasY(0));
     context.lineTo(canvasX(Boundary[1]), canvasY(0));
     context.stroke();
 
-    // Eje -X
+        // -X axis
     context.beginPath();
     context.moveTo(canvasX(0), canvasY(0));
     context.lineTo(canvasX(Boundary[0]), canvasY(0));
     context.stroke();
 
-    // Marcas en el eje X
+        // X axis ruler
     for (var i = 1; i < Boundary[1]; ++i) {
         context.beginPath();
         context.moveTo(canvasX(i), canvasY(0) - 5);
@@ -216,7 +218,7 @@ const drawAxes = () => {
     context.restore();
 }
 
-/* Función que dibuja los dos círculos */
+/* Draws both circles */
 const renderCircles = (x1, y1, r1, x2, y2, r2) => {
     context.beginPath();
     context.arc(canvasX(x1), canvasY(y1), canvasRadius(r1), 0, 2 * Math.PI);
