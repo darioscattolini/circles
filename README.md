@@ -9,8 +9,7 @@ In December 2019, by then more familiar with best practices, I improved the code
 * Removed unnecesary README information from index.html, added a footer, and improved the responsive layout.
 * Added README.md file.
 * Added LICENCE.txt file.
-* Made minor refactoring of JS code.
-* Added more detailed and consistent comments in main.js.
+* Updated comments in main.js.
 
 ## Built with
 * HTML
@@ -26,7 +25,6 @@ This is the link to the deployed version: [https://darioscattolini.github.io/cir
 
 ## Inspiration
 This project is also a solution to an assignment I was given in the programming lessons I took during October and November at [Cibernárium](https://cibernarium.barcelonactiva.cat/) in Barcelona. It was one of the first Object Oriented Programming excercises we had to solve. The assignment asked to treat points and circles as objects built from classes defined in the style of Java. The different calculations performed are methods defined in the Circle class. I also implemented responsive typography for the first time. The challenging part: I added later a canvas element in order to provide a graphic representation of the circles.
-
 
 ## Contact
 Created by [Darío Scattolini](https://darioscattolini.github.io). Feel free to contact me!
